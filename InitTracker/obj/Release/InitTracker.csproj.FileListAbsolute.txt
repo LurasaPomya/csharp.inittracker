@@ -1,0 +1,5 @@
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\bin\Release\InitTracker.exe.config
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Release\InitTracker.InitTracker.resources
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Release\InitTracker.Properties.Resources.resources
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Release\InitTracker.csproj.GenerateResource.Cache
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Release\InitTracker.csprojResolveAssemblyReference.cache

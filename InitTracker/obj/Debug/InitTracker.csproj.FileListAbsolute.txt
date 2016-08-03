@@ -1,0 +1,16 @@
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\bin\Debug\InitTracker.exe.config
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\bin\Debug\InitTracker.exe
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\bin\Debug\InitTracker.pdb
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.csprojResolveAssemblyReference.cache
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.InitTracker.resources
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.Properties.Resources.resources
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.csproj.GenerateResource.Cache
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.exe
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.pdb
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\bin\Debug\InitTracker.exe.manifest
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\bin\Debug\InitTracker.application
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.exe.manifest
+C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTracker.application
+C:\Users\jemcg\Documents\Visual Studio 2015\Projects\InitTracker\InitTracker\bin\Debug\InitTracker.exe.config
+C:\Users\jemcg\Documents\Visual Studio 2015\Projects\InitTracker\InitTracker\obj\Debug\InitTracker.exe
+C:\Users\jemcg\Documents\Visual Studio 2015\Projects\InitTracker\InitTracker\obj\Debug\InitTracker.pdb
