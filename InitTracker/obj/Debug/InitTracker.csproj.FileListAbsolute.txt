@@ -14,3 +14,6 @@ C:\Users\jemcg\Source\Repos\Gm Tools\InitTracker\InitTracker\obj\Debug\InitTrack
 C:\Users\jemcg\Documents\Visual Studio 2015\Projects\InitTracker\InitTracker\bin\Debug\InitTracker.exe.config
 C:\Users\jemcg\Documents\Visual Studio 2015\Projects\InitTracker\InitTracker\obj\Debug\InitTracker.exe
 C:\Users\jemcg\Documents\Visual Studio 2015\Projects\InitTracker\InitTracker\obj\Debug\InitTracker.pdb
+C:\Users\jemcg\Documents\Visual Studio 2015\Projects\csharp.InitTracker\InitTracker\bin\Debug\InitTracker.exe.config
+C:\Users\jemcg\Documents\Visual Studio 2015\Projects\csharp.InitTracker\InitTracker\obj\Debug\InitTracker.exe
+C:\Users\jemcg\Documents\Visual Studio 2015\Projects\csharp.InitTracker\InitTracker\obj\Debug\InitTracker.pdb
