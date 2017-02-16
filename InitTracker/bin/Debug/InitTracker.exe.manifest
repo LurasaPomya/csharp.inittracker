@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InitTracker.exe" size="386528">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InitTracker.exe" size="388064">
       <assemblyIdentity name="InitTracker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8vmfIKow1+px3Qvhu3PUJqcmOWMPNdP8/F73ox2DDkU=</dsig:DigestValue>
+        <dsig:DigestValue>6DLfqdIuqecxNKkFEqQsxjyOyeUcRfYwRg/QoASOpxU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

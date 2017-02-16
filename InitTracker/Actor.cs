@@ -16,5 +16,10 @@ namespace InitTracker
             Name = newName;
             Initiative = newInit;
         }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

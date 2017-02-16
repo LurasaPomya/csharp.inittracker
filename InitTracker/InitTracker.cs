@@ -8,19 +8,15 @@ namespace InitTracker
 {
     public partial class InitTracker : Form
     {
-        //Variables we need
-        private List<Actor> playerList = new List<Actor>();
-        List<string> playerListString = new List<string>();
-        private int currentPlayerPos = 0;
-        private int turnCount = 1;
+        private CombatManager combat = new CombatManager();
 
-        //Initialization
+        // Initialization
         public InitTracker()
         {
             InitializeComponent();
         }
 
-        //Input Validation
+        // Input Validation
         private void validateNameInput()
         {
             if (!string.IsNullOrEmpty(nameTextBox.Text) && !string.IsNullOrWhiteSpace(nameTextBox.Text) && nameTextBox.Text.Length >= 3)
@@ -46,7 +42,7 @@ namespace InitTracker
             }
         }
 
-        //Event Handlers
+        // Event Handlers
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
             validateNameInput();
@@ -71,77 +67,92 @@ namespace InitTracker
 
         private void startCombatBtn_Click(object sender, EventArgs e)
         {
-            turnCount = 0;
-            turnCountTxt.Text = turnCount.ToString();
-
-            startCombatBtn.Enabled = false;
-            endCombatBtn.Enabled = true;
-            nextPlayerBtn.Enabled = true;
-            clearListBtn.Enabled = false;
-
-            currentPlayerTxt.Text = playerListString[currentPlayerPos];
-            nextPlayerTxt.Text = playerListString[currentPlayerPos + 1];
+            if (combat.GetPlayerCount() < 2)
+            {
+                MessageBox.Show("Please add at least 2 players!");
+            }
+            else
+            {
+                combat.StartCombat();
+                endCombatBtn.Enabled = true;
+                startCombatBtn.Enabled = false;
+                currentPlayerTxt.Text = combat.GetActivePlayer().ToString();
+                nextPlayerTxt.Text = combat.GetNextPlayer().ToString();
+                turnCountTxt.Text = combat.GetTurns().ToString();
+                nextPlayerBtn.Enabled = true;
+            }
         }
 
         private void nextPlayerBtn_click(object sender, EventArgs e)
         {
-
-            if (currentPlayerPos == -1)
-            {
-                turnCount++;
-                turnCountTxt.Text = turnCount.ToString();
-            }
-            currentPlayerPos++;
-            if (currentPlayerPos < playerListString.Count - 1)
-            {
-                currentPlayerTxt.Text = playerListString[currentPlayerPos];
-                nextPlayerTxt.Text = playerListString[currentPlayerPos + 1];
-            }
-            else
-            {
-                currentPlayerTxt.Text = playerListString[currentPlayerPos];
-                nextPlayerTxt.Text = playerListString[0];
-                currentPlayerPos = -1;
-            }
+            combat.NextPlayer();
+            currentPlayerTxt.Text = combat.GetActivePlayer().ToString();
+            nextPlayerTxt.Text = combat.GetNextPlayer().ToString();
+            turnCountTxt.Text = combat.GetTurns().ToString();
         }
 
         private void endCombatBtn_Click(object sender, EventArgs e)
         {
+            /* TODO Use new class for this
             startCombatBtn.Enabled = true;
             endCombatBtn.Enabled = false;
             currentPlayerTxt.Text = "";
             nextPlayerTxt.Text = "";
             nextPlayerBtn.Enabled = false;
             clearListBtn.Enabled = true;
+            */
         }
 
         //Add Actor Event Handler
         private void addPlayerBtn_Click(object sender, EventArgs e)
         {
-            playerList.Add(new Actor(nameTextBox.Text, (int)initValue.Value));
-            playerList = playerList.OrderBy(i => i.Initiative).ToList();
-            playerList.Reverse();
-
-            playerListString = playerList.Select(n => n.Name).ToList();
-            playerListBox.DataSource = playerListString;
-            nameTextBox.Text = "";
-            initValue.Value = 0;
-            nameTextBox.Focus();
-            initValue.Enabled = false;
-            addPlayerBtn.Enabled = false;
-            clearListBtn.Enabled = true;
-            if (playerList.Count >= 2)
+            
+            Actor newPlayer = new Actor(nameTextBox.Text, Convert.ToInt32(initValue.Value));
+            if (!combat.AddPlayer(newPlayer))
             {
-                startCombatBtn.Enabled = true;
+                MessageBox.Show("Error Adding Player! (Is it already there?)");
             }
+            else
+            {
+                playerListBox.BeginUpdate();
+                playerListBox.Items.Clear();
+                foreach (Actor a in combat.GetPlayers())
+                {
+                    playerListBox.Items.Add(a.ToString());
+                }
+                playerListBox.EndUpdate();
+                nameTextBox.Text = "";
+                initValue.Value = 0;
+                initValue.Enabled = false;
+                addPlayerBtn.Enabled = false;
+                nameTextBox.Focus();
+            }          
         }
 
         private void clearListBtn_Click(object sender, EventArgs e)
         {
-            playerListString.Clear();
-            playerList.Clear();
-            playerListBox.Items.Clear();
-            clearListBtn.Enabled = false;
+            DialogResult dr = MessageBox.Show("End combat and clear the list?", "Are you Sure?", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                // Clear Player list Box
+                playerListBox.Items.Clear();
+                // Clear Combat related stuff
+                currentPlayerTxt.Clear();
+                nextPlayerTxt.Clear();
+                turnCountTxt.Clear();
+                nextPlayerBtn.Enabled = false;
+                combat.ClearCombat();
+
+                // Clear Add player stuff
+                nameTextBox.Text = "";
+                initValue.Value = 0;
+                initValue.Enabled = false;
+                addPlayerBtn.Enabled = false;
+                startCombatBtn.Enabled = false;
+                endCombatBtn.Enabled = false;
+                nameTextBox.Focus();
+
+            }
         }
     }
 }
