@@ -10,7 +10,7 @@ namespace InitTracker
     class CombatManager
     {
 
-        public Boolean status; // Status of Combat
+        private Boolean status; // Status of Combat
         private int turns; // Turn count
         private int lastTurnCount;
         private int activePlayerNum; // Active player in the list of players
@@ -22,7 +22,7 @@ namespace InitTracker
         {
             playerList = new List<Actor>();
             status = false;
-            turns = 0;
+            turns = 1;
             lastTurnCount = 0;
         }
 
@@ -32,13 +32,15 @@ namespace InitTracker
         {
             playerList.Clear();
             status = false;
-            turns = 0;
+            lastTurnCount = turns;
+            turns = 1;
             activePlayerNum = 0;
 
         }
 
-        //Adds a player to the list. Checks for the current Actor already there.
-        //TODO Use custom exception maybe when it's bad input? For now just returns false
+        // Adds a player to the list. Checks for the current Actor already there.
+        // TODO Use custom exception maybe when it's bad input? For now just returns false
+        // TODO Check for duplicate inits. Or perhaps stop using duplicate inits? As once combat starts, it's just order. Ponder this for a while.
         public Boolean AddPlayer(Actor newPlayer)
         {
             Boolean exists = false;
@@ -109,7 +111,7 @@ namespace InitTracker
         // TODO finish start combat
         public void StartCombat()
         {
-            turns = 0;
+            turns = 1;
             activePlayerNum = 0;
             status = true;
         }
@@ -135,21 +137,41 @@ namespace InitTracker
             return status;
         }
 
-        // TODO Incriment Player
-        public void NextPlayer()
+        // Incriment active player.
+        // TODO Add custom exception
+        public Boolean NextPlayer()
         {
-            if ((activePlayerNum + 1) < playerList.Count)
+            if (status == true) // Ensures combat is actually active.
             {
-                activePlayerNum++;
+                if ((activePlayerNum + 1) < playerList.Count)
+                {
+                    activePlayerNum++;
+                }
+                else
+                {
+                    activePlayerNum = 0;
+                    turns++;
+                }
+                return true;
             }
             else
             {
-                activePlayerNum = 0;
-                turns++;
+                return false;
             }
         }
 
-        // TODO get last combat turn count
+        // Get last combat turn count
+        public int GetLastTurnCount()
+        {
+            return lastTurnCount;
+        }
+
+        // Sort Players by Initiative Scores
+        public void SortPlayers()
+        {
+            playerList = playerList.OrderBy(a => a.Initiative).ToList<Actor>();
+            playerList.Reverse();
+        }
         // TODO Get list of player names
         // TODO Get list of player inits
     }

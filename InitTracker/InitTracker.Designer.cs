@@ -47,6 +47,7 @@
             this.nextPlayerBtn = new System.Windows.Forms.Button();
             this.clearListBtn = new System.Windows.Forms.Button();
             this.lastTurnCountLbl = new System.Windows.Forms.Label();
+            this.LastCombatTurntxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.initValue)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -233,11 +234,20 @@
             this.lastTurnCountLbl.TabIndex = 15;
             this.lastTurnCountLbl.Text = "Last Combat Turn Count:";
             // 
+            // LastCombatTurntxt
+            // 
+            this.LastCombatTurntxt.Enabled = false;
+            this.LastCombatTurntxt.Location = new System.Drawing.Point(147, 423);
+            this.LastCombatTurntxt.Name = "LastCombatTurntxt";
+            this.LastCombatTurntxt.Size = new System.Drawing.Size(100, 20);
+            this.LastCombatTurntxt.TabIndex = 16;
+            // 
             // InitTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.LastCombatTurntxt);
             this.Controls.Add(this.lastTurnCountLbl);
             this.Controls.Add(this.clearListBtn);
             this.Controls.Add(this.nextPlayerBtn);
@@ -281,6 +291,7 @@
         private System.Windows.Forms.Button nextPlayerBtn;
         private System.Windows.Forms.Button clearListBtn;
         private System.Windows.Forms.Label lastTurnCountLbl;
+        private System.Windows.Forms.TextBox LastCombatTurntxt;
     }
 }
 

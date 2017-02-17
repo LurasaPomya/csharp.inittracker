@@ -80,6 +80,7 @@ namespace InitTracker
                 nextPlayerTxt.Text = combat.GetNextPlayer().ToString();
                 turnCountTxt.Text = combat.GetTurns().ToString();
                 nextPlayerBtn.Enabled = true;
+                clearListBtn.Enabled = false;
             }
         }
 
@@ -93,6 +94,11 @@ namespace InitTracker
 
         private void endCombatBtn_Click(object sender, EventArgs e)
         {
+            clearListBtn.Enabled = true;
+            startCombatBtn.Enabled = true;
+            combat.EndCombat();
+            turnCountTxt.Text = "0";
+            LastCombatTurntxt.Text = combat.GetLastTurnCount().ToString();
             /* TODO Use new class for this
             startCombatBtn.Enabled = true;
             endCombatBtn.Enabled = false;
@@ -114,6 +120,7 @@ namespace InitTracker
             }
             else
             {
+                combat.SortPlayers();
                 playerListBox.BeginUpdate();
                 playerListBox.Items.Clear();
                 foreach (Actor a in combat.GetPlayers())
