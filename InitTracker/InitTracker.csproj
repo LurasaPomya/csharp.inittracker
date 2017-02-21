@@ -74,7 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actor.cs" />
+    <Compile Include="Character.cs" />
     <Compile Include="CombatManager.cs" />
     <Compile Include="InitTracker.cs">
       <SubType>Form</SubType>

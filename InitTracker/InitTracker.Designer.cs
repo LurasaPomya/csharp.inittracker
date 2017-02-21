@@ -48,17 +48,21 @@
             this.clearListBtn = new System.Windows.Forms.Button();
             this.lastTurnCountLbl = new System.Windows.Forms.Label();
             this.LastCombatTurntxt = new System.Windows.Forms.TextBox();
+            this.initModValue = new System.Windows.Forms.NumericUpDown();
+            this.modLbl = new System.Windows.Forms.Label();
+            this.delPlayerBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.initValue)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.initModValue)).BeginInit();
             this.SuspendLayout();
             // 
             // addPlayerBtn
             // 
             this.addPlayerBtn.Enabled = false;
-            this.addPlayerBtn.Location = new System.Drawing.Point(263, 98);
+            this.addPlayerBtn.Location = new System.Drawing.Point(263, 146);
             this.addPlayerBtn.Name = "addPlayerBtn";
-            this.addPlayerBtn.Size = new System.Drawing.Size(75, 23);
-            this.addPlayerBtn.TabIndex = 3;
+            this.addPlayerBtn.Size = new System.Drawing.Size(100, 23);
+            this.addPlayerBtn.TabIndex = 4;
             this.addPlayerBtn.Text = "Add Player";
             this.addPlayerBtn.UseVisualStyleBackColor = true;
             this.addPlayerBtn.Click += new System.EventHandler(this.addPlayerBtn_Click);
@@ -94,8 +98,7 @@
             this.playerListBox.FormattingEnabled = true;
             this.playerListBox.Location = new System.Drawing.Point(6, 3);
             this.playerListBox.Name = "playerListBox";
-            this.playerListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.playerListBox.Size = new System.Drawing.Size(251, 199);
+            this.playerListBox.Size = new System.Drawing.Size(251, 264);
             this.playerListBox.TabIndex = 6;
             this.playerListBox.TabStop = false;
             // 
@@ -112,6 +115,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.delPlayerBtn);
+            this.panel1.Controls.Add(this.initModValue);
+            this.panel1.Controls.Add(this.modLbl);
             this.panel1.Controls.Add(this.endCombatBtn);
             this.panel1.Controls.Add(this.startCombatBtn);
             this.panel1.Controls.Add(this.initValue);
@@ -122,13 +128,13 @@
             this.panel1.Controls.Add(this.addPlayerBtn);
             this.panel1.Location = new System.Drawing.Point(1, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(371, 215);
+            this.panel1.Size = new System.Drawing.Size(371, 270);
             this.panel1.TabIndex = 7;
             // 
             // endCombatBtn
             // 
             this.endCombatBtn.Enabled = false;
-            this.endCombatBtn.Location = new System.Drawing.Point(263, 172);
+            this.endCombatBtn.Location = new System.Drawing.Point(263, 244);
             this.endCombatBtn.Name = "endCombatBtn";
             this.endCombatBtn.Size = new System.Drawing.Size(100, 23);
             this.endCombatBtn.TabIndex = 8;
@@ -139,7 +145,7 @@
             // 
             // startCombatBtn
             // 
-            this.startCombatBtn.Location = new System.Drawing.Point(263, 143);
+            this.startCombatBtn.Location = new System.Drawing.Point(263, 215);
             this.startCombatBtn.Name = "startCombatBtn";
             this.startCombatBtn.Size = new System.Drawing.Size(100, 23);
             this.startCombatBtn.TabIndex = 7;
@@ -151,7 +157,7 @@
             // currentPlayerlbl
             // 
             this.currentPlayerlbl.AutoSize = true;
-            this.currentPlayerlbl.Location = new System.Drawing.Point(13, 254);
+            this.currentPlayerlbl.Location = new System.Drawing.Point(12, 358);
             this.currentPlayerlbl.Name = "currentPlayerlbl";
             this.currentPlayerlbl.Size = new System.Drawing.Size(76, 13);
             this.currentPlayerlbl.TabIndex = 8;
@@ -160,7 +166,7 @@
             // currentPlayerTxt
             // 
             this.currentPlayerTxt.Enabled = false;
-            this.currentPlayerTxt.Location = new System.Drawing.Point(95, 251);
+            this.currentPlayerTxt.Location = new System.Drawing.Point(94, 355);
             this.currentPlayerTxt.Name = "currentPlayerTxt";
             this.currentPlayerTxt.Size = new System.Drawing.Size(143, 20);
             this.currentPlayerTxt.TabIndex = 9;
@@ -169,7 +175,7 @@
             // nextPlayerTxt
             // 
             this.nextPlayerTxt.Enabled = false;
-            this.nextPlayerTxt.Location = new System.Drawing.Point(95, 306);
+            this.nextPlayerTxt.Location = new System.Drawing.Point(94, 410);
             this.nextPlayerTxt.Name = "nextPlayerTxt";
             this.nextPlayerTxt.Size = new System.Drawing.Size(143, 20);
             this.nextPlayerTxt.TabIndex = 11;
@@ -178,7 +184,7 @@
             // nextPlayerlbl
             // 
             this.nextPlayerlbl.AutoSize = true;
-            this.nextPlayerlbl.Location = new System.Drawing.Point(25, 309);
+            this.nextPlayerlbl.Location = new System.Drawing.Point(24, 413);
             this.nextPlayerlbl.Name = "nextPlayerlbl";
             this.nextPlayerlbl.Size = new System.Drawing.Size(64, 13);
             this.nextPlayerlbl.TabIndex = 10;
@@ -187,7 +193,7 @@
             // turnCountLbl
             // 
             this.turnCountLbl.AutoSize = true;
-            this.turnCountLbl.Location = new System.Drawing.Point(26, 364);
+            this.turnCountLbl.Location = new System.Drawing.Point(25, 468);
             this.turnCountLbl.Name = "turnCountLbl";
             this.turnCountLbl.Size = new System.Drawing.Size(63, 13);
             this.turnCountLbl.TabIndex = 12;
@@ -196,7 +202,7 @@
             // turnCountTxt
             // 
             this.turnCountTxt.Enabled = false;
-            this.turnCountTxt.Location = new System.Drawing.Point(95, 361);
+            this.turnCountTxt.Location = new System.Drawing.Point(94, 465);
             this.turnCountTxt.Name = "turnCountTxt";
             this.turnCountTxt.Size = new System.Drawing.Size(143, 20);
             this.turnCountTxt.TabIndex = 13;
@@ -205,7 +211,7 @@
             // nextPlayerBtn
             // 
             this.nextPlayerBtn.Enabled = false;
-            this.nextPlayerBtn.Location = new System.Drawing.Point(95, 277);
+            this.nextPlayerBtn.Location = new System.Drawing.Point(94, 381);
             this.nextPlayerBtn.Name = "nextPlayerBtn";
             this.nextPlayerBtn.Size = new System.Drawing.Size(100, 23);
             this.nextPlayerBtn.TabIndex = 9;
@@ -216,7 +222,7 @@
             // 
             // clearListBtn
             // 
-            this.clearListBtn.Location = new System.Drawing.Point(272, 426);
+            this.clearListBtn.Location = new System.Drawing.Point(271, 530);
             this.clearListBtn.Name = "clearListBtn";
             this.clearListBtn.Size = new System.Drawing.Size(100, 23);
             this.clearListBtn.TabIndex = 14;
@@ -228,7 +234,7 @@
             // lastTurnCountLbl
             // 
             this.lastTurnCountLbl.AutoSize = true;
-            this.lastTurnCountLbl.Location = new System.Drawing.Point(16, 426);
+            this.lastTurnCountLbl.Location = new System.Drawing.Point(15, 530);
             this.lastTurnCountLbl.Name = "lastTurnCountLbl";
             this.lastTurnCountLbl.Size = new System.Drawing.Size(125, 13);
             this.lastTurnCountLbl.TabIndex = 15;
@@ -237,16 +243,45 @@
             // LastCombatTurntxt
             // 
             this.LastCombatTurntxt.Enabled = false;
-            this.LastCombatTurntxt.Location = new System.Drawing.Point(147, 423);
+            this.LastCombatTurntxt.Location = new System.Drawing.Point(146, 527);
             this.LastCombatTurntxt.Name = "LastCombatTurntxt";
             this.LastCombatTurntxt.Size = new System.Drawing.Size(100, 20);
             this.LastCombatTurntxt.TabIndex = 16;
+            // 
+            // initModValue
+            // 
+            this.initModValue.Enabled = false;
+            this.initModValue.Location = new System.Drawing.Point(263, 120);
+            this.initModValue.Name = "initModValue";
+            this.initModValue.Size = new System.Drawing.Size(75, 20);
+            this.initModValue.TabIndex = 3;
+            this.initModValue.Enter += new System.EventHandler(this.initModValue_Enter);
+            // 
+            // modLbl
+            // 
+            this.modLbl.AutoSize = true;
+            this.modLbl.Location = new System.Drawing.Point(263, 103);
+            this.modLbl.Name = "modLbl";
+            this.modLbl.Size = new System.Drawing.Size(48, 13);
+            this.modLbl.TabIndex = 10;
+            this.modLbl.Text = "Init Mod:";
+            // 
+            // delPlayerBtn
+            // 
+            this.delPlayerBtn.Enabled = false;
+            this.delPlayerBtn.Location = new System.Drawing.Point(263, 175);
+            this.delPlayerBtn.Name = "delPlayerBtn";
+            this.delPlayerBtn.Size = new System.Drawing.Size(100, 23);
+            this.delPlayerBtn.TabIndex = 11;
+            this.delPlayerBtn.Text = "Delete Player";
+            this.delPlayerBtn.UseVisualStyleBackColor = true;
+            this.delPlayerBtn.Click += new System.EventHandler(this.delPlayerBtn_Click);
             // 
             // InitTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 461);
+            this.ClientSize = new System.Drawing.Size(384, 561);
             this.Controls.Add(this.LastCombatTurntxt);
             this.Controls.Add(this.lastTurnCountLbl);
             this.Controls.Add(this.clearListBtn);
@@ -260,13 +295,14 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(400, 500);
+            this.MaximumSize = new System.Drawing.Size(400, 600);
             this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "InitTracker";
             this.Text = "Dec\'s GM Tools Init Tracker";
             ((System.ComponentModel.ISupportInitialize)(this.initValue)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.initModValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,6 +328,9 @@
         private System.Windows.Forms.Button clearListBtn;
         private System.Windows.Forms.Label lastTurnCountLbl;
         private System.Windows.Forms.TextBox LastCombatTurntxt;
+        private System.Windows.Forms.NumericUpDown initModValue;
+        private System.Windows.Forms.Label modLbl;
+        private System.Windows.Forms.Button delPlayerBtn;
     }
 }
 

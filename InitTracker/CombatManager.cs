@@ -14,20 +14,18 @@ namespace InitTracker
         private int turns; // Turn count
         private int lastTurnCount;
         private int activePlayerNum; // Active player in the list of players
-        private List<Actor> playerList; // List of players in the form of an Actor class
+        private List<Character> playerList; // List of players in the form of an Actor class
 
         // Constructor Method(s)
-        // TODO Consider adding a method of importing a playerlist?
         public CombatManager()
         {
-            playerList = new List<Actor>();
+            playerList = new List<Character>();
             status = false;
             turns = 1;
             lastTurnCount = 0;
         }
 
         // Clears combat. Essentially like End Combat, but End combat doesn't clear the player list.
-        // TODO Update end combat function to just do this, but with an optional variable to set clear. EndCombat(false/true)
         public void ClearCombat()
         {
             playerList.Clear();
@@ -39,14 +37,12 @@ namespace InitTracker
         }
 
         // Adds a player to the list. Checks for the current Actor already there.
-        // TODO Use custom exception maybe when it's bad input? For now just returns false
-        // TODO Check for duplicate inits. Or perhaps stop using duplicate inits? As once combat starts, it's just order. Ponder this for a while.
-        public Boolean AddPlayer(Actor newPlayer)
+        public Boolean AddPlayer(Character newPlayer)
         {
             Boolean exists = false;
             if (playerList.Count != 0)
             {
-                foreach (Actor a in playerList)
+                foreach (Character a in playerList)
                 {
                     if (newPlayer.Name == a.Name)
                     {
@@ -62,9 +58,17 @@ namespace InitTracker
             else { return false; }
         }
 
+        private void checkForDupes()
+        {
+            Boolean noDupes = false;
+            do
+            {
+
+            } while (!noDupes);
+        }
+
         // Removes a player from the list.
-        // TODO Use custom exception or return ID if we go that route.
-        public Boolean RemovePlayer(Actor delPlayer)
+        public Boolean RemovePlayer(Character delPlayer)
         {
             if (playerList.Remove(delPlayer))
             {
@@ -78,7 +82,7 @@ namespace InitTracker
         }
 
         // Get List of Players
-        public List<Actor> GetPlayers()
+        public List<Character> GetPlayers()
         {
             return playerList;
         }
@@ -90,13 +94,13 @@ namespace InitTracker
         }
 
         // Get Active Player
-        public Actor GetActivePlayer()
+        public Character GetActivePlayer()
         {
             return playerList.ElementAt(activePlayerNum);
         }
 
         // Get Next Player
-        public Actor GetNextPlayer()
+        public Character GetNextPlayer()
         {
             if ((activePlayerNum + 1) >= playerList.Count)
             {
@@ -108,7 +112,6 @@ namespace InitTracker
             }
         }
 
-        // TODO finish start combat
         public void StartCombat()
         {
             turns = 1;
@@ -116,7 +119,6 @@ namespace InitTracker
             status = true;
         }
 
-        // TODO Finish end combat
         public void EndCombat()
         {
             status = false;
@@ -138,7 +140,6 @@ namespace InitTracker
         }
 
         // Incriment active player.
-        // TODO Add custom exception
         public Boolean NextPlayer()
         {
             if (status == true) // Ensures combat is actually active.
@@ -169,11 +170,44 @@ namespace InitTracker
         // Sort Players by Initiative Scores
         public void SortPlayers()
         {
-            playerList = playerList.OrderBy(a => a.Initiative).ToList<Actor>();
-            playerList.Reverse();
+            playerList = playerList
+                .OrderByDescending(a => a.Initiative)
+                .ThenByDescending(a => a.Modifier)
+                .ToList<Character>();
         }
-        // TODO Get list of player names
-        // TODO Get list of player inits
+
+        // Get list of player Names as string list
+        public List<String> PlayerNames()
+        {
+            List<String> names = new List<String>();
+            foreach (Character c in playerList)
+            {
+                names.Add(c.Name);
+            }
+            return names;
+        }
+
+        // Get List of Player inits as a list of Inits
+        public List<int> PlayerInits()
+        {
+            List<int> inits = new List<int>();
+            foreach (Character c in playerList)
+            {
+                inits.Add(c.Initiative);
+            }
+            return inits;
+        }
+
+        public List<int> PlayerMods()
+        {
+            List<int> mods = new List<int>();
+            foreach (Character c in playerList)
+            {
+                mods.Add(c.Modifier);
+            }
+            return mods;
+        }
+
     }
 
 }

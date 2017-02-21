@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -9,19 +10,24 @@ namespace InitTracker
     public partial class InitTracker : Form
     {
         private CombatManager combat = new CombatManager();
+        private BindingList<Character> playerList = new BindingList<Character>();
+
 
         // Initialization
         public InitTracker()
         {
             InitializeComponent();
+            playerListBox.DataSource = playerList;
+            playerListBox.DisplayMember = "Name";
         }
 
         // Input Validation
         private void validateNameInput()
         {
-            if (!string.IsNullOrEmpty(nameTextBox.Text) && !string.IsNullOrWhiteSpace(nameTextBox.Text) && nameTextBox.Text.Length >= 3)
+            if (!string.IsNullOrEmpty(nameTextBox.Text) && (!string.IsNullOrWhiteSpace(nameTextBox.Text)) && (nameTextBox.Text.Length >= 3))
             {
                 initValue.Enabled = true;
+                initModValue.Enabled = true;
             }
             else
             {
@@ -32,7 +38,19 @@ namespace InitTracker
 
         private void validateInitInput()
         {
-            if (initValue.Value != 0 && !string.IsNullOrEmpty(initValue.Text))
+            if ((initValue.Value) != 0 && (!string.IsNullOrEmpty(initValue.Text)))
+            {
+                addPlayerBtn.Enabled = true;
+            }
+            else
+            {
+                addPlayerBtn.Enabled = false;
+            }
+        }
+
+        private void validateInitModInput()
+        {
+            if (!string.IsNullOrEmpty(initModValue.Text))
             {
                 addPlayerBtn.Enabled = true;
             }
@@ -63,6 +81,22 @@ namespace InitTracker
         private void initValue_Enter(object sender, EventArgs e)
         {
             initValue.Select(0, initValue.Text.Length);
+        }
+
+        private void initModValue_Enter(object sender, EventArgs e)
+        {
+            initModValue.Select(0, initModValue.Text.Length);
+        }
+
+        private void initModValue_TextChanged(object sender, EventArgs e)
+        {
+            validateInitModInput();
+
+        }
+
+        private void initModValue_KeyUp(object sender, KeyEventArgs e)
+        {
+            validateInitModInput();
         }
 
         private void startCombatBtn_Click(object sender, EventArgs e)
@@ -99,41 +133,42 @@ namespace InitTracker
             combat.EndCombat();
             turnCountTxt.Text = "0";
             LastCombatTurntxt.Text = combat.GetLastTurnCount().ToString();
-            /* TODO Use new class for this
-            startCombatBtn.Enabled = true;
-            endCombatBtn.Enabled = false;
-            currentPlayerTxt.Text = "";
-            nextPlayerTxt.Text = "";
-            nextPlayerBtn.Enabled = false;
-            clearListBtn.Enabled = true;
-            */
         }
 
         //Add Actor Event Handler
         private void addPlayerBtn_Click(object sender, EventArgs e)
         {
             
-            Actor newPlayer = new Actor(nameTextBox.Text, Convert.ToInt32(initValue.Value));
+            Character newPlayer = new Character(nameTextBox.Text, Convert.ToInt32(initValue.Value), Convert.ToInt32(initModValue.Value));
             if (!combat.AddPlayer(newPlayer))
             {
                 MessageBox.Show("Error Adding Player! (Is it already there?)");
             }
             else
             {
-                combat.SortPlayers();
-                playerListBox.BeginUpdate();
-                playerListBox.Items.Clear();
-                foreach (Actor a in combat.GetPlayers())
-                {
-                    playerListBox.Items.Add(a.ToString());
-                }
-                playerListBox.EndUpdate();
+                updatePlayerList();
                 nameTextBox.Text = "";
                 initValue.Value = 0;
                 initValue.Enabled = false;
+                initModValue.Value = 0;
+                initModValue.Enabled = false;
                 addPlayerBtn.Enabled = false;
+                if (playerListBox.Items.Count > 0)
+                {
+                    delPlayerBtn.Enabled = true;
+                }
                 nameTextBox.Focus();
             }          
+        }
+
+        private void updatePlayerList()
+        {
+            combat.SortPlayers();
+            playerList.Clear();
+            foreach (Character a in combat.GetPlayers())
+            {
+                playerList.Add(a);
+            }
         }
 
         private void clearListBtn_Click(object sender, EventArgs e)
@@ -142,7 +177,7 @@ namespace InitTracker
             if (dr == DialogResult.Yes)
             {
                 // Clear Player list Box
-                playerListBox.Items.Clear();
+                playerList.Clear();
                 // Clear Combat related stuff
                 currentPlayerTxt.Clear();
                 nextPlayerTxt.Clear();
@@ -154,12 +189,29 @@ namespace InitTracker
                 nameTextBox.Text = "";
                 initValue.Value = 0;
                 initValue.Enabled = false;
+                initModValue.Enabled = false;
+                initModValue.Value = 0;
                 addPlayerBtn.Enabled = false;
                 startCombatBtn.Enabled = false;
                 endCombatBtn.Enabled = false;
                 nameTextBox.Focus();
+                delPlayerBtn.Enabled = false;
 
             }
+        }
+
+        private void delPlayerBtn_Click(object sender, EventArgs e)
+        {
+            if ( playerListBox.SelectedIndex == -1 )
+            {
+                MessageBox.Show("Please select an Character first!");
+            }
+            else
+            {
+                combat.RemovePlayer(playerList.ElementAt(playerListBox.SelectedIndex));
+                updatePlayerList();        
+            }
+       
         }
     }
 }
