@@ -30,3 +30,5 @@ C:\Users\jemcg\DecDev\csharp.desktopapp.inittracker\InitTracker\obj\Debug\InitTr
 C:\Users\jemcg\DecDev\csharp.desktopapp.inittracker\InitTracker\obj\Debug\InitTracker.csproj.GenerateResource.Cache
 C:\Users\jemcg\DecDev\csharp.desktopapp.inittracker\InitTracker\obj\Debug\InitTracker.exe.manifest
 C:\Users\jemcg\DecDev\csharp.desktopapp.inittracker\InitTracker\obj\Debug\InitTracker.application
+C:\Users\jemcg\DecDev\csharp.desktopapp.inittracker\InitTracker\bin\Debug\CombatManagerEngine.dll
+C:\Users\jemcg\DecDev\csharp.desktopapp.inittracker\InitTracker\bin\Debug\CombatManagerEngine.pdb

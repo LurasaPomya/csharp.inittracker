@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitTracker", "InitTracker\InitTracker.csproj", "{26ADFE14-F149-4703-A116-F0B30D7E909B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{58D0F190-228E-4EFB-983A-69E8B236B190} = {58D0F190-228E-4EFB-983A-69E8B236B190}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombatManagerEngine", "CombatManagerEngine\CombatManagerEngine.csproj", "{58D0F190-228E-4EFB-983A-69E8B236B190}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,6 +21,10 @@ Global
 		{26ADFE14-F149-4703-A116-F0B30D7E909B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{26ADFE14-F149-4703-A116-F0B30D7E909B}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{26ADFE14-F149-4703-A116-F0B30D7E909B}.Release|Any CPU.Deploy.0 = Debug|Any CPU
+		{58D0F190-228E-4EFB-983A-69E8B236B190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D0F190-228E-4EFB-983A-69E8B236B190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D0F190-228E-4EFB-983A-69E8B236B190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D0F190-228E-4EFB-983A-69E8B236B190}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

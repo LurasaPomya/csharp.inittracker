@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InitTracker
 {
-    class Character
+    public class Character
     {
         public String Name { get; set; }
         public int Initiative { get; set; }

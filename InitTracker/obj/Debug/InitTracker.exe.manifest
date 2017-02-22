@@ -42,14 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InitTracker.exe" size="391136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CombatManagerEngine.dll" size="7680">
+      <assemblyIdentity name="CombatManagerEngine" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>IvORT7cUj9m+50yT/V+2WeGgKvEQPgA4E9prvscKrZ0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InitTracker.exe" size="388064">
       <assemblyIdentity name="InitTracker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>54VlKhQyyt57t1rT2CrAd0swbSxMpTD37nml1IT/s0o=</dsig:DigestValue>
+        <dsig:DigestValue>QQjoLgyytYMjWU0h4F953DIw+Jy64cNMt3kGszHphTw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

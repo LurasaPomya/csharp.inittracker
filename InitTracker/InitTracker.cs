@@ -121,9 +121,14 @@ namespace InitTracker
         private void nextPlayerBtn_click(object sender, EventArgs e)
         {
             combat.NextPlayer();
+            getActivePlayers();
+            turnCountTxt.Text = combat.GetTurns().ToString();
+        }
+
+        private void getActivePlayers()
+        {
             currentPlayerTxt.Text = combat.GetActivePlayer().ToString();
             nextPlayerTxt.Text = combat.GetNextPlayer().ToString();
-            turnCountTxt.Text = combat.GetTurns().ToString();
         }
 
         private void endCombatBtn_Click(object sender, EventArgs e)
@@ -158,6 +163,10 @@ namespace InitTracker
                     delPlayerBtn.Enabled = true;
                 }
                 nameTextBox.Focus();
+                if (combat.GetCombatStatus())
+                {
+                    getActivePlayers();
+                }
             }          
         }
 

@@ -74,8 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Character.cs" />
-    <Compile Include="CombatManager.cs" />
     <Compile Include="InitTracker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +121,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CombatManagerEngine\CombatManagerEngine.csproj">
+      <Project>{58d0f190-228e-4efb-983a-69e8b236b190}</Project>
+      <Name>CombatManagerEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
